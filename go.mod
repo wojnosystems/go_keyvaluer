@@ -1,4 +1,4 @@
-module go_keyvaluer
+module github.com/wojnosystems/go_keyvaluer
 
 go 1.12
 
