@@ -13,7 +13,7 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package key_value
+package go_keyvaluer
 
 // KeyValuer is thread-safe Key-Value object store
 type KeyValuer interface {
@@ -32,7 +32,7 @@ type KeyValuer interface {
 	// @param key the string key that identifies the record
 	// @param value is the new value to set, if the setIfTrue returns true
 	// @param setIfTrue is the test method that returns true if the set should occur, or
-	// false if it should not. This function takes in 3 params:
+	// false if it should not. This function takes in 2 params:
 	//   0 @param currentValue is the value that is currently in the map
 	//   1 @param ok is true if original is found in the map, false if not
 	CheckAndSet(key string, value interface{}, setIfTrue func(currentValue interface{}, ok bool) bool)

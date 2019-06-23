@@ -13,7 +13,7 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package key_value
+package go_keyvaluer
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -25,15 +25,15 @@ func TestKeyValue_MustGetExists(t *testing.T) {
 	value := "puppy"
 	kvo := New()
 	kvo.Set(key, value)
-	assert.Equal( t, value, kvo.MustGet(key) )
+	assert.Equal(t, value, kvo.MustGet(key))
 }
 
 func TestKeyValue_MustGetNotExists(t *testing.T) {
 	key := "test"
 	kvo := New()
-	assert.Panics( t, func() {
+	assert.Panics(t, func() {
 		kvo.MustGet(key)
-	} )
+	})
 }
 
 func TestKeyValue_GetExists(t *testing.T) {
@@ -42,16 +42,16 @@ func TestKeyValue_GetExists(t *testing.T) {
 	kvo := New()
 	kvo.Set(key, value)
 	actual, ok := kvo.Get(key)
-	assert.Equal( t, value, actual )
-	assert.True( t, ok )
+	assert.Equal(t, value, actual)
+	assert.True(t, ok)
 }
 
 func TestKeyValue_GetNotExists(t *testing.T) {
 	key := "test"
 	kvo := New()
 	actual, ok := kvo.Get(key)
-	assert.Empty( t, actual )
-	assert.False( t, ok )
+	assert.Empty(t, actual)
+	assert.False(t, ok)
 }
 
 func TestKeyValue_CASYes(t *testing.T) {
@@ -62,7 +62,7 @@ func TestKeyValue_CASYes(t *testing.T) {
 		return !ok
 	})
 	_, ok := kvo.Get(key)
-	assert.True( t, ok )
+	assert.True(t, ok)
 }
 
 func TestKeyValue_CASNo(t *testing.T) {
@@ -70,7 +70,7 @@ func TestKeyValue_CASNo(t *testing.T) {
 	value := "puppy"
 	value2 := "puppy2"
 	kvo := New()
-	kvo.Set(key,value)
+	kvo.Set(key, value)
 	kvo.CheckAndSet(key, value2, func(currentValue interface{}, ok bool) bool {
 		return !ok
 	})
@@ -82,17 +82,17 @@ func TestKeyValue_Del(t *testing.T) {
 	key := "test"
 	value := "puppy"
 	kvo := New()
-	kvo.Set(key,value)
+	kvo.Set(key, value)
 	kvo.Del(key)
 	_, ok := kvo.Get(key)
-	assert.False( t, ok )
+	assert.False(t, ok)
 }
 
 func TestKeyValue_Copy(t *testing.T) {
 	key := "test"
 	value := "puppy"
 	kvo := New()
-	kvo.Set(key,value)
+	kvo.Set(key, value)
 
 	kvoCopy := kvo.Copy()
 	_, ok := kvoCopy.Get(key)

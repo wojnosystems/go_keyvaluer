@@ -13,13 +13,12 @@
 // OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package key_value
+package go_keyvaluer
 
 import (
 	"fmt"
 	"sync"
 )
-
 
 // keyValue is a key-value store for persisting arbitrary values by string keys in a thread-safe manner
 type keyValue struct {
